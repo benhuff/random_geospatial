@@ -49,10 +49,14 @@ class RasterTiler:
             )
             geo_tiles_dataframe = gdf(
                 {
-                    'raster_name': [self.raster_name] * len(tiles),
+                    'raster_source': [os.path.abspath(self.raster_filepath)] * len(tiles),
                     'tile_name': ['_'.join([str(t) for t in tile]) for tile in tiles],
                     'tile_ext': [self.raster_ext] * len(tiles),
                     'is_edge': is_edge,
+                    'pixel_xmin': [t[0] for t in tiles],
+                    'pixel_ymin': [t[1] for t in tiles],
+                    'pixel_xmax': [t[2] for t in tiles],
+                    'pixel_ymax': [t[3] for t in tiles],
                     'geometry': [self.geo_tile(src, tile) for tile in tiles]
                 },
                 crs=src.crs.to_string()
