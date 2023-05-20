@@ -7,7 +7,7 @@ import warnings
 # image imports
 from rasterio import open as ropen
 from rasterio.mask import mask
-from skimage import img_as_ubyte, exposure
+from skimage import exposure
 
 # geometry imports
 from geopandas import GeoDataFrame as gdf
